@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { randomUUID } = require("crypto");
 
 const contactsPath = path.join(__dirname, "db", "contacts.json");
 
@@ -27,7 +28,7 @@ function removeContact(contactId) {
 function addContact(name, email, phone) {
   const contacts = listContacts();
   const newContact = {
-    id: Date.now().toString(),
+    id: randomUUID().slice(0, 21),
     name,
     email,
     phone,
